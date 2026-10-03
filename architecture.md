@@ -30,6 +30,7 @@ One page, top to bottom:
 - `ExpenseItem` — amount, category, note, Edit and Delete buttons
 - `EmptyState` — friendly message when there are no expenses
 - `WeeklyBreakdown` — this week's spending per category, largest first, with simple bars (v1.1)
+- `CategoryRing` — SVG ring, one coloured segment per category, total in the centre (v1.2)
 
 Helpers (`src/lib`):
 
@@ -38,6 +39,8 @@ Helpers (`src/lib`):
 - `dates.js` — today string, start/end of this week, day labels
 - `money.js` — `formatRM()`, parse and validate amount
 - `breakdown.js` — `categoryBreakdown(weekExpenses)`, sums in sen per category (v1.1)
+- `compare.js` — `compareWithLastWeek()`: this week so far vs the same days last week (v1.2)
+- `categories.js` also holds a graphic-only colour per category (v1.2)
 
 ## Data / State Model
 
@@ -89,6 +92,7 @@ App state:
 - `src/components/WeeklyTotal.jsx`, `ExpenseForm.jsx`, `ExpenseList.jsx`, `DayGroup.jsx`, `ExpenseItem.jsx`, `EmptyState.jsx`
 - `src/lib/categories.js`, `storage.js`, `dates.js`, `money.js`, `breakdown.js` (v1.1)
 - `src/components/WeeklyBreakdown.jsx` (v1.1)
+- `src/components/CategoryRing.jsx`, `src/lib/compare.js` (v1.2)
 - `public/favicon.svg` (v1.1)
 
 ## Constraints

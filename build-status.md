@@ -5,9 +5,9 @@
 - Name: Belanja Log
 - Build shape: Browser-local tool
 - Shape confirmation: Confirmed by learner (2026-10-03)
-- Current KDBM Lite stage: Shipped (v1.0 live); v1.1 design upgrades in progress
+- Current KDBM Lite stage: Shipped (v1.2 live)
 - Current phase: Ready to Build
-- Current work card: `work-cards/08-design-upgrades.md`
+- Current work card: `work-cards/09-ring-and-compare.md`
 
 ## Completed work cards
 
@@ -31,7 +31,8 @@ Planning files complete: `project-brief.md`, `architecture.md`, `design.md`, `bu
 
 - [x] Work Card 07: GitHub push done (https://github.com/Reezy067/belanja-log, commit 7ad43b7)
 - [x] Work Card 07: Vercel deploy done (https://belanja-log.vercel.app/)
-- [x] 08 Design Upgrades v1.1 (completed 2026-10-03; learner approved; pushed)
+- [x] 08 Design Upgrades v1.1 (completed 2026-10-03; learner approved; pushed a302f3f)
+- [x] 09 Ring and Compare v1.2 (completed 2026-10-03; learner approved; pushed)
 
 ## Blockers
 
@@ -152,6 +153,15 @@ Not verified by agent: `npm run preview` in a browser (the agent can't hold a se
 - Learner feedback: loves the bank card; background too plain/white. Added per learner's original direction: soft blue light from above, cool-to-warm base gradient, faint batik-inspired "bunga" motif (`public/batik.svg`) fading downward, slightly clearer frosted cards. `design.md` updated (Background with depth); batik moved out of Later. `npm run build` passes.
 - Not verified by agent: browser look (learner check)
 
+## Work Card 09 log (v1.2)
+
+- Learner approved (12:13): push v1.1, then README/submission, Kiro steering file, "vs last week", category ring
+- Pushed v1.1 as `a302f3f`
+- Created: `src/lib/compare.js`, `src/components/CategoryRing.jsx`, `.kiro/steering/belanja-log.md`, `README.md`, `work-cards/09-ring-and-compare.md`
+- Updated: `src/lib/categories.js` (graphic colours), `WeeklyTotal.jsx` (comparison pill), `WeeklyBreakdown.jsx` (ring, dots, coloured bars), `App.jsx`, `App.css`; planning files (brief, architecture, design v1.2, blueprint)
+- Passed: `npm run build`; comparison check (RM 12.00 vs RM 15.00 gives -3.00; last-week Sunday excluded on a Saturday; null when no last-week data)
+- Learner approved: continue (push)
+
 ## Next instruction for AI
 
-After the learner replies `continue` for Work Card 08, commit (`git add` specific changed files) with message `feat: v1.1 bank-card hero, logo, weekly breakdown` and `git push` to origin main so Vercel redeploys. Then ask the learner to check https://belanja-log.vercel.app/ and help prepare the submission (explanation + how Kiro was used).
+Work Card 09 pushed. Next: help the learner submit before 14:15 MYT (project link, explanation, how Kiro was used) and rehearse the demo. Earlier note: after the learner replies `continue` for Work Card 09, commit the changed files and push to origin main so Vercel redeploys. Then give the learner the submission text (explanation + how Kiro was used) and the demo script.

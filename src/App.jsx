@@ -7,6 +7,7 @@ import { sumAmounts } from './lib/money.js'
 import { formatRange, getWeekRange, isInWeek, todayString } from './lib/dates.js'
 import { loadExpenses, saveExpenses } from './lib/storage.js'
 import { categoryBreakdown } from './lib/breakdown.js'
+import { compareWithLastWeek } from './lib/compare.js'
 
 // Unique ID for each expense. randomUUID needs a secure context
 // (https or localhost), so fall back for plain-http LAN testing.
@@ -50,6 +51,7 @@ function App() {
   const weekExpenses = expenses.filter((e) => isInWeek(e.date, weekRange))
   const weekTotal = sumAmounts(weekExpenses)
   const breakdown = categoryBreakdown(weekExpenses)
+  const comparison = compareWithLastWeek(expenses, weekRange, today)
   const editingExpense = expenses.find((e) => e.id === editingId) ?? null
 
   function addExpense(data) {
@@ -94,6 +96,7 @@ function App() {
           total={weekTotal}
           rangeLabel={formatRange(weekRange)}
           count={weekExpenses.length}
+          comparison={comparison}
         />
 
         <ExpenseForm
@@ -104,7 +107,7 @@ function App() {
           onCancel={cancelEdit}
         />
 
-        {expenses.length > 0 && <WeeklyBreakdown items={breakdown} />}
+        {expenses.length > 0 && <WeeklyBreakdown items={breakdown} total={weekTotal} />}
 
         <section className="list-section" aria-labelledby="list-title">
           <h2 id="list-title" className="section-title">

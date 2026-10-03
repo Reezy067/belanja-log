@@ -181,6 +181,22 @@ Inspired by the feel of seeing your balance in a banking app. No bank names, log
 - [ ] Breakdown totals match the weekly total; percentages look sensible
 - [ ] Breakdown updates after add, edit, delete, and survives refresh
 
+## Version 1.2 Upgrades (approved 2026-10-03)
+
+### "vs this time last week" (bank card)
+
+- Small pill under the amount: "↓ RM 3.00 less than this time last week", "↑ RM 3.00 more…", or "Same as this time last week"
+- Fair comparison: this week Monday to today, against last week Monday to the same weekday
+- Hidden when nothing was logged in last week's matching period
+- White text on a `rgba(255,255,255,0.14)` pill; arrows are `aria-hidden`; neutral tone (awareness, not judgement)
+
+### Category ring (MAE-style)
+
+- Inside "Where your money went": a 140px SVG ring on the left, rows on the right (stacked and centred under 480px)
+- One segment per category, largest first from the top, 3px gaps; track `#e8e8ed`; centre shows the weekly total and "this week"
+- Category colours (graphics only, never text): Makan `#003893`, Transport `#3d7fe0`, Bills `#6a5acd`, Shopping `#e0a800`, Pengajian `#13917f`, Fun `#d9577a`, Lain-lain `#8a8f98`
+- Each row gets a matching colour dot, and its bar uses the same colour
+- Plain SVG, no chart library; ring is `aria-hidden` because the rows carry the data
 ## Later
 
 - "vs. last week" comparison

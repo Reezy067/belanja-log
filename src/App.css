@@ -299,8 +299,106 @@ body::before {
 .breakdown-fill {
   height: 100%;
   border-radius: 999px;
-  background: #003893;
+  background: #003893; /* overridden per category inline */
   transition: width 0.3s ease;
+}
+
+/* ===== v1.2: "vs this time last week" on the bank card ===== */
+.total-compare {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: -6px 0 16px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.total-compare-arrow {
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* ===== v1.2: category ring (MAE-style) ===== */
+.breakdown-body {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  align-items: center;
+  gap: 24px;
+  margin-top: 18px;
+}
+
+.breakdown-body .breakdown-list {
+  margin-top: 0;
+}
+
+.ring {
+  position: relative;
+  width: 140px;
+  height: 140px;
+}
+
+.ring-svg {
+  display: block;
+}
+
+.ring-track {
+  stroke: #e8e8ed;
+}
+
+.ring-segment {
+  transition: stroke-dasharray 0.4s ease, stroke-dashoffset 0.4s ease;
+}
+
+.ring-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.ring-amount {
+  color: #000000;
+  font-size: 17px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.ring-caption {
+  font-size: 12px;
+  color: #57575c;
+}
+
+.breakdown-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.breakdown-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+@media (max-width: 479px) {
+  .breakdown-body {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 20px;
+  }
+
+  .breakdown-body .breakdown-list {
+    width: 100%;
+  }
 }
 
 /* ===== Form ===== */

@@ -43,6 +43,8 @@ The core loop listed in Version-One Success.
 
 Approved v1.1 upgrade (2026-10-03, after v1.0 shipped): bank-card style weekly total with a "BL" logo mark and favicon, plus a "Where your money went" weekly category breakdown with simple bars.
 
+Approved v1.2 upgrade (2026-10-03): "vs this time last week" line on the bank card and an MAE-style category ring in the breakdown.
+
 ### Later
 
 - "Spent today" total
@@ -54,7 +56,7 @@ Not today:
 - No budgets or spending limits
 - No login or accounts
 - No cloud sync, backend, or database
-- No chart libraries or complex charts (simple CSS bars in the weekly breakdown are allowed; learner approved 2026-10-03)
+- No chart libraries (simple CSS bars and one SVG category ring are allowed; learner approved 2026-10-03)
 - No bank or e-wallet connections (e.g. Touch 'n Go, DuitNow)
 - No receipt photo uploads
 - No multiple currencies (RM only)

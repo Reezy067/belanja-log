@@ -44,6 +44,8 @@ The eight items in the Version-One Promise.
 
 Approved v1.1 upgrade (2026-10-03, after v1.0 shipped): bank-card weekly total with "BL" logo mark + favicon, and the "Where your money went" weekly category breakdown with simple bars. See `design.md` > Version 1.1 Upgrades and `work-cards/08-design-upgrades.md`.
 
+Approved v1.2 upgrade (2026-10-03): "vs this time last week" on the bank card and an MAE-style category ring. See `design.md` > Version 1.2 Upgrades and `work-cards/09-ring-and-compare.md`.
+
 ### Later
 
 - "Spent today" total
@@ -58,7 +60,7 @@ Not in this build:
 - Budgets, spending limits, or progress-to-target indicators
 - Login or accounts
 - Cloud sync, backend, or database
-- Chart libraries or complex charts (simple CSS bars in the weekly breakdown are allowed)
+- Chart libraries (simple CSS bars and one SVG category ring are allowed)
 - Bank or e-wallet connections (e.g. Touch 'n Go, DuitNow)
 - Receipt photo uploads
 - Multiple currencies (RM only)
@@ -259,6 +261,7 @@ Planning files stay where they are: `START_HERE.md`, `README_FOR_TRAINERS.md`, `
 | 06 | `work-cards/06-review-and-fix.md` | Review Mirror pass + single smallest useful fix; `npm run build` passes | Full flow, mobile width, accessibility checks |
 | 07 | `work-cards/07-github-vercel-proof.md` | Git init, GitHub push, Vercel deploy, proof | Live URL works; flow re-tested live |
 | 08 | `work-cards/08-design-upgrades.md` | v1.1: bank-card hero, logo + favicon, weekly category breakdown; redeploy | Breakdown matches total; hero readable at 360px; live site updated |
+| 09 | `work-cards/09-ring-and-compare.md` | v1.2: category ring, "vs this time last week", steering file, README | Ring matches rows; comparison correct; live site updated |
 
 ## Review Mirror
 
