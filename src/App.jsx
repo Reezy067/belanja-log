@@ -2,9 +2,11 @@ import { useEffect, useRef, useState } from 'react'
 import WeeklyTotal from './components/WeeklyTotal.jsx'
 import ExpenseForm from './components/ExpenseForm.jsx'
 import ExpenseList from './components/ExpenseList.jsx'
+import WeeklyBreakdown from './components/WeeklyBreakdown.jsx'
 import { sumAmounts } from './lib/money.js'
 import { formatRange, getWeekRange, isInWeek, todayString } from './lib/dates.js'
 import { loadExpenses, saveExpenses } from './lib/storage.js'
+import { categoryBreakdown } from './lib/breakdown.js'
 
 // Unique ID for each expense. randomUUID needs a secure context
 // (https or localhost), so fall back for plain-http LAN testing.
@@ -45,7 +47,9 @@ function App() {
 
   const today = todayString()
   const weekRange = getWeekRange(today)
-  const weekTotal = sumAmounts(expenses.filter((e) => isInWeek(e.date, weekRange)))
+  const weekExpenses = expenses.filter((e) => isInWeek(e.date, weekRange))
+  const weekTotal = sumAmounts(weekExpenses)
+  const breakdown = categoryBreakdown(weekExpenses)
   const editingExpense = expenses.find((e) => e.id === editingId) ?? null
 
   function addExpense(data) {
@@ -76,12 +80,21 @@ function App() {
   return (
     <div className="container">
       <header className="app-header">
-        <h1>Belanja Log</h1>
-        <p className="tagline">Track your RM, stay aware</p>
+        <span className="logo-mark" aria-hidden="true">
+          BL
+        </span>
+        <div>
+          <h1>Belanja Log</h1>
+          <p className="tagline">Track your RM, stay aware</p>
+        </div>
       </header>
 
       <main className="app-main">
-        <WeeklyTotal total={weekTotal} rangeLabel={formatRange(weekRange)} />
+        <WeeklyTotal
+          total={weekTotal}
+          rangeLabel={formatRange(weekRange)}
+          count={weekExpenses.length}
+        />
 
         <ExpenseForm
           key={editingExpense ? `edit-${editingExpense.id}` : 'add'}
@@ -90,6 +103,8 @@ function App() {
           onUpdate={updateExpense}
           onCancel={cancelEdit}
         />
+
+        {expenses.length > 0 && <WeeklyBreakdown items={breakdown} />}
 
         <section className="list-section" aria-labelledby="list-title">
           <h2 id="list-title" className="section-title">

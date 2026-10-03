@@ -78,4 +78,4 @@ Stop when proof is captured and `build-status.md` shows Shipped. If push or depl
 
 ## Status
 
-Not started
+Done (2026-10-03). GitHub: https://github.com/Reezy067/belanja-log. Live: https://belanja-log.vercel.app/. Learner tested the live site.

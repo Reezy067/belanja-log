@@ -17,7 +17,8 @@ One page, top to bottom:
 
 1. Header: "Belanja Log" + this week's total
 2. Expense form (add mode / edit mode)
-3. Expense list, grouped by day, newest first (or empty state)
+3. Weekly breakdown card "Where your money went" (v1.1; shown once any expense exists)
+4. Expense list, grouped by day, newest first (or empty state)
 
 ## Component Map
 
@@ -28,6 +29,7 @@ One page, top to bottom:
 - `DayGroup` — day heading ("Today", "Yesterday", "Mon, 28 Sep") + its items
 - `ExpenseItem` — amount, category, note, Edit and Delete buttons
 - `EmptyState` — friendly message when there are no expenses
+- `WeeklyBreakdown` — this week's spending per category, largest first, with simple bars (v1.1)
 
 Helpers (`src/lib`):
 
@@ -35,6 +37,7 @@ Helpers (`src/lib`):
 - `storage.js` — `loadExpenses()` / `saveExpenses()`
 - `dates.js` — today string, start/end of this week, day labels
 - `money.js` — `formatRM()`, parse and validate amount
+- `breakdown.js` — `categoryBreakdown(weekExpenses)`, sums in sen per category (v1.1)
 
 ## Data / State Model
 
@@ -84,7 +87,9 @@ App state:
 - `src/App.jsx`
 - `src/App.css`
 - `src/components/WeeklyTotal.jsx`, `ExpenseForm.jsx`, `ExpenseList.jsx`, `DayGroup.jsx`, `ExpenseItem.jsx`, `EmptyState.jsx`
-- `src/lib/categories.js`, `storage.js`, `dates.js`, `money.js`
+- `src/lib/categories.js`, `storage.js`, `dates.js`, `money.js`, `breakdown.js` (v1.1)
+- `src/components/WeeklyBreakdown.jsx` (v1.1)
+- `public/favicon.svg` (v1.1)
 
 ## Constraints
 

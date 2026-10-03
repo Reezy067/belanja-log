@@ -40,11 +40,12 @@ A user can open Belanja Log on a phone or laptop and:
 
 ### Now
 
-The eight items in the Version-One Promise. Nothing else.
+The eight items in the Version-One Promise.
+
+Approved v1.1 upgrade (2026-10-03, after v1.0 shipped): bank-card weekly total with "BL" logo mark + favicon, and the "Where your money went" weekly category breakdown with simple bars. See `design.md` > Version 1.1 Upgrades and `work-cards/08-design-upgrades.md`.
 
 ### Later
 
-- Category breakdown for the week
 - "Spent today" total
 - "vs. last week" comparison
 - Faint batik-inspired background texture
@@ -57,7 +58,7 @@ Not in this build:
 - Budgets, spending limits, or progress-to-target indicators
 - Login or accounts
 - Cloud sync, backend, or database
-- Charts or graphs
+- Chart libraries or complex charts (simple CSS bars in the weekly breakdown are allowed)
 - Bank or e-wallet connections (e.g. Touch 'n Go, DuitNow)
 - Receipt photo uploads
 - Multiple currencies (RM only)
@@ -80,6 +81,7 @@ Components:
 | `DayGroup` | Day heading ("Today", "Yesterday", "Mon, 28 Sep") + its `ExpenseItem`s |
 | `ExpenseItem` | Amount, category pill, note, date; Edit and Delete text buttons |
 | `EmptyState` | Inline SVG + "No expenses yet" message |
+| `WeeklyBreakdown` | v1.1: this week's spend per category, largest first, simple bars |
 
 Helpers in `src/lib`:
 
@@ -89,6 +91,7 @@ Helpers in `src/lib`:
 | `money.js` | `formatRM(amount)`, `parseAmount(text)`, `sumAmounts(expenses)` |
 | `dates.js` | `todayString()`, `getWeekRange(today)`, `isInWeek(dateStr, range)`, `dayLabel(dateStr, today)`, `formatRange(range)` |
 | `storage.js` | `STORAGE_KEY`, `loadExpenses()`, `saveExpenses(expenses)` |
+| `breakdown.js` | v1.1: `categoryBreakdown(weekExpenses)` returns `{ category, amount, share }[]` |
 
 ## Data / State / Storage Rules
 
@@ -220,6 +223,8 @@ Full details: `design.md`.
 ├── index.html              # lang="en", title "Belanja Log", viewport meta
 ├── package.json            # name "belanja-log", scripts: dev, build, preview
 ├── vite.config.js          # React plugin
+├── public/
+│   └── favicon.svg         # v1.1: BL logo mark
 └── src/
     ├── main.jsx
     ├── App.jsx
@@ -230,12 +235,14 @@ Full details: `design.md`.
     │   ├── ExpenseList.jsx
     │   ├── DayGroup.jsx
     │   ├── ExpenseItem.jsx
-    │   └── EmptyState.jsx
+    │   ├── EmptyState.jsx
+    │   └── WeeklyBreakdown.jsx   # v1.1
     └── lib/
         ├── categories.js
         ├── money.js
         ├── dates.js
-        └── storage.js
+        ├── storage.js
+        └── breakdown.js          # v1.1
 ```
 
 Planning files stay where they are: `START_HERE.md`, `README_FOR_TRAINERS.md`, `project-brief.md`, `architecture.md`, `design.md`, `build-blueprint.md`, `build-status.md`, `prompts/`, `templates/`, `work-cards/`.
@@ -251,6 +258,7 @@ Planning files stay where they are: `START_HERE.md`, `README_FOR_TRAINERS.md`, `
 | 05 | `work-cards/05-localstorage-save-refresh.md` | `storage.js`, load on start, save on change, safe fallback | Add, refresh, still there; edit, refresh, still edited; delete, refresh, still gone |
 | 06 | `work-cards/06-review-and-fix.md` | Review Mirror pass + single smallest useful fix; `npm run build` passes | Full flow, mobile width, accessibility checks |
 | 07 | `work-cards/07-github-vercel-proof.md` | Git init, GitHub push, Vercel deploy, proof | Live URL works; flow re-tested live |
+| 08 | `work-cards/08-design-upgrades.md` | v1.1: bank-card hero, logo + favicon, weekly category breakdown; redeploy | Breakdown matches total; hero readable at 360px; live site updated |
 
 ## Review Mirror
 

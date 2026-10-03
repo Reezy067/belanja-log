@@ -5,9 +5,9 @@
 - Name: Belanja Log
 - Build shape: Browser-local tool
 - Shape confirmation: Confirmed by learner (2026-10-03)
-- Current KDBM Lite stage: Ship
+- Current KDBM Lite stage: Shipped (v1.0 live); v1.1 design upgrades in progress
 - Current phase: Ready to Build
-- Current work card: `work-cards/07-github-vercel-proof.md`
+- Current work card: `work-cards/08-design-upgrades.md`
 
 ## Completed work cards
 
@@ -25,12 +25,13 @@ Planning files complete: `project-brief.md`, `architecture.md`, `design.md`, `bu
 - [x] 04 Update and Delete Item (completed 2026-10-03; learner localhost check passed)
 - [x] 05 localStorage Save and Refresh (completed 2026-10-03; learner localhost check passed)
 - [x] 06 Review and Fix (completed 2026-10-03; review PASS, 1 fix; learner final review passed)
-- [ ] 07 GitHub + Vercel Proof
+- [x] 07 GitHub + Vercel Proof (completed 2026-10-03; live URL tested by learner)
 
 ## In progress
 
-- [ ] Work Card 07: GitHub push + Vercel deploy
-- [ ] After shipping: design upgrades approved by learner (see Decisions)
+- [x] Work Card 07: GitHub push done (https://github.com/Reezy067/belanja-log, commit 7ad43b7)
+- [x] Work Card 07: Vercel deploy done (https://belanja-log.vercel.app/)
+- [x] 08 Design Upgrades v1.1 (completed 2026-10-03; learner approved; pushed)
 
 ## Blockers
 
@@ -64,6 +65,9 @@ Planning files complete: `project-brief.md`, `architecture.md`, `design.md`, `bu
 - Git identity: Present (user.name and user.email set)
 - Browser for localhost: Available (learner confirmed)
 - GitHub account: Ready, logged in as Reezy067 (learner confirmed)
+- GitHub repo: https://github.com/Reezy067/belanja-log (public, pushed 2026-10-03)
+- Live URL: https://belanja-log.vercel.app/ (learner tested: add, refresh, works)
+- Proof level: Strong (live Vercel URL + public GitHub repo)
 - Vercel account: Ready, linked with GitHub (learner confirmed)
 - Fallback AI account: None for now (optional)
 - KrackedDevs account: Ready, logged in (learner confirmed)
@@ -139,6 +143,15 @@ Single smallest useful fix applied: `src/App.jsx` remembers which expense was be
 
 Not verified by agent: `npm run preview` in a browser (the agent can't hold a server open); learner runs the final localhost review.
 
+## Work Card 08 log (v1.1 design upgrades)
+
+- Planning files updated first: `project-brief.md` (Now/Later/Never), `architecture.md` (component map, files), `design.md` (new "Version 1.1 Upgrades" section), `build-blueprint.md` (scope lock, components, tree, card plan), new `work-cards/08-design-upgrades.md`
+- Created: `public/favicon.svg` (BL mark), `src/lib/breakdown.js` (categoryBreakdown in sen, formatShare), `src/components/WeeklyBreakdown.jsx`
+- Updated: `index.html` (favicon, theme-color), `src/App.jsx` (logo mark in header, weekExpenses, count, breakdown after form), `src/components/WeeklyTotal.jsx` (bank-card layout, chip, range + count), `src/App.css` (logo mark, bank-card hero, breakdown rows and bars, mobile)
+- Passed: `npm run build`; favicon copied to dist and linked; breakdown check: Makan RM 12.50 78% | Transport RM 3.50 22%, sum equals weekly total, shares sum to 1, ties follow category order, 0.1 + 0.2 = 0.3
+- Learner feedback: loves the bank card; background too plain/white. Added per learner's original direction: soft blue light from above, cool-to-warm base gradient, faint batik-inspired "bunga" motif (`public/batik.svg`) fading downward, slightly clearer frosted cards. `design.md` updated (Background with depth); batik moved out of Later. `npm run build` passes.
+- Not verified by agent: browser look (learner check)
+
 ## Next instruction for AI
 
-Work Card 07 in progress: git init and first commit, learner creates GitHub repo, push, Vercel import. After the live URL works, plan and build the two approved design upgrades (bank-card hero + logo/favicon, weekly category breakdown), updating design.md and build-blueprint.md first. Do not change app code during the shipping steps.
+After the learner replies `continue` for Work Card 08, commit (`git add` specific changed files) with message `feat: v1.1 bank-card hero, logo, weekly breakdown` and `git push` to origin main so Vercel redeploys. Then ask the learner to check https://belanja-log.vercel.app/ and help prepare the submission (explanation + how Kiro was used).

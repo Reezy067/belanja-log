@@ -132,11 +132,59 @@ Status chips / labels:
 - One clear primary action: "Add expense"
 - Readable on phone width (360px)
 
-## Later (not version one)
+## Version 1.1 Upgrades (approved 2026-10-03)
 
-- Faint batik-inspired background texture
+These override the Header, Weekly total, and Background rules above.
+
+### Background with depth
+
+Plain off-white made the frosted glass look flat, so the background now gives the glass something to blur:
+
+- Base: gradient `#f4f6fb` (cool) to `#f3f1ec` (warm)
+- A single soft royal-blue light from above the header (`rgba(0,56,147,0.12)`), not random blobs
+- Faint four-petal "bunga" motif inspired by Malaysian batik and songket (`public/batik.svg`): blue strokes at about 11% opacity with a tiny gold centre, 96px tile, fading towards the bottom
+- Cards: `rgba(255,255,255,0.68)` + `blur(16px) saturate(140%)`, so the motif turns into a soft texture behind them
+- Text contrast is unchanged (AA); the motif never sits behind text at a visible strength
+
+### Header logo mark
+
+- A 44px rounded square (12px radius) in `#003893` with white bold "BL", and a short gold `#FFCC00` bar along the bottom (decoration only)
+- Sits left of "Belanja Log" and the tagline
+- The same mark is the browser-tab icon (`public/favicon.svg`); `theme-color` is `#003893`
+
+### Bank-card weekly total (hero)
+
+Inspired by the feel of seeing your balance in a banking app. No bank names, logos, or card numbers.
+
+- Background: gradient `#003893` to `#002a70` (135deg); white text; no frosted glass on this card
+- Shadow: `0 12px 32px rgba(0, 56, 147, 0.28)`; 16px radius
+- Top row: "This week" (white, 80% opacity, 14px, weight 600) on the left; a small gold "card chip" (decorative, `aria-hidden`) on the right
+- Middle: amount, white, 44px (36px mobile), weight 700, tabular numerals, left-aligned
+- Bottom row: week range on the left and expense count on the right ("3 expenses"), white at 80% opacity, 14px
+- White and 80%-white text on `#003893` passes AA
+
+### "Where your money went" breakdown
+
+- Frosted card placed after the form, before "Your expenses"; shown once any expense exists
+- Title "Where your money went", subtitle "This week, by category" (muted)
+- One row per category with spending this week, largest first: category name (left), amount in RM + percentage (right), then a thin bar below
+- Bar: 8px tall, 999px radius, track `#e8e8ed`, fill `#003893`; width = share of the weekly total (minimum 2% so tiny amounts stay visible)
+- Percent shows "<1%" when under 1%
+- If there are expenses but none this week: "Nothing spent this week yet."
+- Bars are `aria-hidden`; the row text carries all the information
+- Simple CSS bars only. No chart library, no pie or donut chart
+
+### Upgrade checklist
+
+- [ ] Hero reads like a bank-card balance and stays readable at 360px
+- [ ] Logo mark and favicon match; gold is decoration only
+- [ ] Breakdown totals match the weekly total; percentages look sensible
+- [ ] Breakdown updates after add, edit, delete, and survives refresh
+
+## Later
+
 - "vs. last week" comparison
-- Charts, category breakdown, monthly view
+- Monthly view; any chart library
 
 ## Design Verification Checklist
 
